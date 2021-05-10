@@ -1,0 +1,117 @@
+<div class="hero">
+    <h1 class="naranja">Encontrando Huellitas</h1>
+    <h2>publica si tu mascota se perdió o si consideras que un animalito de la calle esta perdido</h2>
+    <a href="/crear-cuenta" class="btn btn-verde">Obtener Cuenta</a>
+</div>
+<div class="contenedor">
+    <h2>Ultimas Publicaciones</h2>    
+    <h2>Mascotas Perdidas</h2>     
+    <div class="grid columnas-md-3 ">
+        <% if( mascotas.length > 0 ) { %> 
+            <% mascotas.forEach(publicacion => { %>             
+                <div class="card">
+                    <div class="card-imagen">
+                        <a href="/mascota/<%= publicacion.slug %>">
+                            <img src="/uploads/mascotas/<%= publicacion.imagen %> ">
+                        </a>  
+                    </div>                              
+                    <div class="card-texto">
+                        <% moment.locale('es'); %> 
+                        <p class="fecha"><%= moment( publicacion.publicacion ).format('LLLL') %> Horas </p>
+                        <a href="/mascota/<%= publicacion.slug %> ">
+                            <h3>Mascota perdida <%= publicacion.mascota %> </h3>
+                        </a>
+                        <div class="info-autor">
+                            <% if(publicacion.usuario.imagen){ %>                             
+                                <img class="imagen" src="/uploads/perfiles/<%= publicacion.usuario.imagen%> ">                                 
+                            <% } else { %>
+                                <img class="imagen" src="/img/avatar.png%> ">                                             
+                            <% } %> 
+                            <div class="informacion">
+                                <p>Publicado por:</p>
+                                <p class="autor"><%= publicacion.usuario.nombre %> </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            <% }) %> 
+        <% } else { %>
+            <p>No tienes publicaciones creadas</p>
+        <% } %>          
+    </div>
+    <h2>Peluditos sin Identificar</h2>   
+    <div class="grid columnas-md-3 ">
+        <% if( peluditos.length > 0 ) { %> 
+            <% peluditos.forEach(publicacion => { %>             
+                <div class="card">
+                    <div class="card-imagen">
+                        <a href="/peludito/<%= publicacion.slug %>">
+                            <img src="/uploads/peluditos/<%= publicacion.imagen %> ">
+                        </a> 
+                    </div>                               
+                    <div class="card-texto">
+                        <% moment.locale('es'); %> 
+                        <p class="fecha"><%= moment( publicacion.publicacion ).format('LLLL') %> Horas</p>
+                        <a href="/peludito/<%= publicacion.slug %> ">
+                            <h3>Peludito en la calle</h3>
+                        </a>
+                        <div class="info-autor">
+                            <% if(publicacion.usuario.imagen){ %>                             
+                                <img class="imagen" src="/uploads/perfiles/<%= publicacion.usuario.imagen%> ">                                 
+                            <% } else { %>
+                                <img class="imagen" src="/img/avatar.png%> ">                                             
+                            <% } %> 
+                            <div class="informacion">
+                                <p>Publicado por:</p>
+                                <p class="autor"><%= publicacion.usuario.nombre %> </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            <% }) %> 
+        <% } else { %> 
+            <p>No tienes publicaciones creadas</p>       
+        <% } %>    
+    </div>
+</div>
+
+<main class="bg-gris categorias">
+    <h2>Publicaciones por Categoría</h2>
+    <div class="contenedor">
+        <ul class="listado-categorias grid columnas-2 columnas-md-3">
+            <li>
+                <a href="/categoria/mascotas-perdidas">
+                    <img src="/img/categoria_1.jpg">
+                    <p>Mascotas Perdidas</p>
+                </a>
+            </li>
+            <li>
+                <a href="/categoria/peluditos-perdidos">
+                    <img src="/img/categoria_2.jpg">
+                    <p>Peluditos en la calle sin identificar</p>
+                </a>
+            </li>  
+            <li>
+                <a href="/categoria/mascotas-encontradas">
+                    <img src="/img/categoria_3.jpg">
+                    <p>Mascotas reencontradas con sus dueños</p>
+                </a>
+            </li>             
+        </ul>
+    </div>
+</main>
+
+<div class="rosa-celeste">
+    <div class="contenedor huellitas grid columnas-md-2">
+        <section class="mision">
+            <h3>Misión</h3>            
+            <p>Ser un medio de información el cual mediante publicaciones pueda ayudar a las personas a reencontrarse con sus mascotas perdidas.</p>
+        </section>
+        <section>
+            <h3>Visión</h3>
+            <p>Queremos incentivar a las personas a realizar una publicación cuando encuentren a un animalito con características de estar perdido en la calle, publiquen esta información del animalito, para que así las personas que perdieron a su mascota puedan identificar si se trata de su mascota.</p>
+        </section>
+    </div>
+</div>

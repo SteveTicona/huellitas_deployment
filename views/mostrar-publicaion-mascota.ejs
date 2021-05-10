@@ -1,0 +1,78 @@
+<div class="encabezado-publicacion">
+    <div class="contenedor">
+        <div class="resumen-publicacion">
+            <% if(mascota.estado === 'perdido') { %> 
+                <h1>Mascota Perdida <%= mascota.mascota %> </h1>
+            <% } else { %>
+                <h1>Mascota Encontrada <%= mascota.mascota %> </h1>
+            <% } %> 
+            
+            <div class="info-autor">
+                <div class="imagen">
+                    <% if(mascota.usuario.imagen) {%>
+                        <img class="imagen" src="/uploads/perfiles/<%= mascota.usuario.imagen%> ">
+                    <% }else { %>  
+                        <img class="imagen" src="/img/avatar.png%> "> 
+                    <% } %> 
+                </div>
+                <div class="infomacion">
+                    <p>Publicado por:</p>
+                    <p class="autor">
+                        <%= mascota.usuario.nombre %> 
+                    </p>
+                </div>
+            </div> <!--Info autor-->
+        </div> <!--Resumen Publicacion-->
+        <div>
+            <% if(mascota.estado === 'perdido') { %> 
+            <a href="/categoria/mascotas-perdidas">
+                <h1 class="color-plomo">Mascotas Perdidas</h1>            
+            </a>
+            <% } else { %>
+            <a href="/categoria/mascotas-encontradas">
+                <h1 class="color-plomo">Mascotas Encontradas</h1>            
+            </a>
+            <% } %> 
+        </div>
+    </div>
+</div>
+
+<main class="contenido-publicacion">
+    <div class="contenedor">
+        <div class="informacion-publicacion">            
+            <div class="descripcion-publicacion">                
+                <img src="/uploads/mascotas/<%= mascota.imagen %> " alt="">
+                <p><span>Raza : </span><%= mascota.raza %> </p>
+                <p><span>Nombre : </span><%= mascota.mascota %> </p>
+                <p><span>Sexo : </span><%= mascota.sexo %> </p>
+                <p><span>Tamaño : </span><%= mascota.tamano %> </p>  
+                <p><span>Color : </span><%= mascota.color %> </p>  
+                <% moment.locale('es'); %> 
+                <% const fecha = mascota.fecha + ' ' + mascota.hora; %>
+                <!-- <p><span>Fecha en que se perdio : </span><%= moment( fecha ).format('LLLL') %> Horas </p> -->
+                <p><span>Fecha en que se perdió: </span><%= moment( fecha ).format('LL') %> </p>
+                <% moment.locale('en'); %> 
+                <p><span>Hora en que se perdió : </span><%= moment( fecha ).format('LT') %></p>
+                <p><span>Número de Contacto : </span><%= mascota.telefono %> </p>  
+                <p><span>Informacion Adicional :</span></p>
+                <%- mascota.descripcion %> 
+            </div><!--Descripcion-->            
+        </div><!--Informacion Publicacion-->
+        <aside class="informacion">
+            <legend>Lugar por donde se perdio</legend>
+            <div class="fecha">               
+                <i class="far fa-calendar-alt"></i>
+                <% moment.locale('es'); %>                 
+                <p><%= moment( fecha ).format('LLLL') %> Horas </p>              
+            </div>
+            <div class="ubicacion">
+                <i class="fas fa-map-marker-alt"></i>
+                <p><%= mascota.direccion %> </p>                 
+            </div>
+             <!--Mapa Ubicacion-->
+            <input type="hidden" id="lat" value="<%= mascota.ubicacion.coordinates[0] %> ">
+            <input type="hidden" id="lng" value="<%= mascota.ubicacion.coordinates[1] %> ">
+            <div id="ubicacion-publicacion"></div>              
+        </aside>
+    </div>
+</main>

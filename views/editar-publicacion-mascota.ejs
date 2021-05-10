@@ -1,0 +1,102 @@
+<main class="contenedor contenedor-formularios">
+    <h1><%= nombrePagina %> </h1>
+
+    <form class="default-form" method="POST" enctype="multipart/form-data">
+
+        <div class="columnas-2 grid">
+            <div class="campo">
+                <label>Mascota</label>
+                <input type="text" value="<%= publicacion.mascota %>" name="mascota" placeholder="Nombre de la Mascota" required>
+            </div>
+            <div class="campo">
+                <label>Raza</label>
+                <input type="text" name="raza" value="<%= publicacion.raza %>" placeholder="Raza de la mascota">
+            </div>            
+        </div>
+
+        <div class="columnas-2 grid">
+            <div class="campo">
+                <label>Sexo</label>
+                <select name="sexo" required>
+                    <option value="">-- Seleccione una Opción --</option>
+                    <option value="Macho" <%= publicacion.sexo === "Macho" ? 'selected' : '' %> >Macho</option>
+                    <option value="Hembra" <%= publicacion.sexo === "Hembra" ? 'selected' : '' %> >Hembra</option>
+                </select>
+            </div>
+            <div class="campo">
+                <label>Color</label>
+                <input type="text" name="color" value="<%= publicacion.color %>" placeholder="Colores de la mascota">
+            </div>            
+        </div>
+
+        <div class="columnas-2 grid">
+            <div class="campo">
+                <label>Tamaño de la mascota</label>
+                <select name="tamano" required>
+                    <option value="">-- Seleccione una Opción --</option>
+                    <option value="Grande" <%= publicacion.tamano === "Grande" ? 'selected' : '' %> >Grande</option>
+                    <option value="Mediano" <%= publicacion.tamano === "Mediano" ? 'selected' : '' %>>Mediano</option>
+                    <option value="Pequeño" <%= publicacion.tamano === "Pequeño" ? 'selected' : '' %>>Pequeño</option>
+                </select>
+            </div>
+            <div class="campo">
+                <label>Fecha en que se perdió</label>
+                <input type="date" name="fecha" placeholder="mm/dd/yyyy" value="<%= publicacion.fecha %>" required>                
+            </div>            
+        </div>
+
+        <div class="columnas-2 grid">
+            <div class="campo">
+                <label>Telefono</label>
+                <input type="text" name="telefono" value="<%= publicacion.telefono %>" placeholder="Tu numero de celular" required>
+            </div>
+            <div class="campo">
+                <label>Hora en que se perdió</label>
+                <input type="time" name="hora" value="<%= publicacion.hora %>" required>
+            </div>
+        </div>
+       
+
+        <div class="campo descripcion">
+            <label>Información Adiconal</label>
+            <div class="contenedor-editor">
+                <input type="hidden" id="x" name="descripcion" value="<%= publicacion.descripcion %>">
+                <trix-editor input="x"></trix-editor>
+            </div>
+        </div>
+
+        <div class="campo">
+            <label>Cambiar Imagen</label>
+            <input id="file" type="file" name="imagen">
+        </div> 
+        <% if(publicacion.imagen){ %>     
+        <div class="campo">
+             <label>Imagen Actual</label>
+             <img class="img-pub" src="/uploads/mascotas/<%= publicacion.imagen %> " width="200">
+             <label> Imagen Nueva : </label>
+             <div id="preview" class="image-preview"></div>
+        </div>
+        <% } else { %>
+            <p>No hay Imagen actual</p>
+        <% } %> 
+      
+        <legend>Lugar por donde se perdió</legend>
+        <div class="campo buscador align-none">
+            <label>Coloca una Dirección</label>
+            <div class="contenedor-input">
+                <input type="text" name="direccion" placeholder="Ubicación" value="<%= publicacion.direccion %> " required>
+                <small>Mueva el pin al lugar aproximado donde se perdió su mascota</small>                 
+            </div>            
+        </div>
+        <div class="campo mapa">
+            <div id="mapa"></div>
+        </div>
+        <input type="hidden" id="lat" name="lat" value="<%= publicacion.ubicacion.coordinates[0] %>">
+        <input type="hidden" id="lng" name="lng" value="<%= publicacion.ubicacion.coordinates[1] %>">       
+        <input type="hidden" id="editar" value="editar">  
+        <div class="campo enviar">            
+            <input type="submit" value="Guardar Cambios" class="btn btn-rosa">
+        </div>
+
+    </form>
+</main>

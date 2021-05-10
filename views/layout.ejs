@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buscando Huellitas - <%- nombrePagina %></title>
+    <link
+      rel="stylesheet"
+      href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700;900&family=Staatliches&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/daf430d6ab.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="/css/trix.css">
+    <link rel="stylesheet" href="/css/app.css" />
+  </head>
+  <body>
+    <header class="site-header contenedor">
+      <a href="/">
+        <img src="/img/logo.png" alt="Logo Meeti" />
+      </a>
+
+      <nav class="nav">        
+        <% if(locals.usuario.id) { %> 
+          <%- include ('partials/nav-autenticado.ejs') %> 
+        <% } else {%> 
+          <%- include ('partials/nav-no-autenticado.ejs') %> 
+        <% } %> 
+      </nav>
+    </header>
+
+    <% if(locals.mensajes) { %> 
+      <% const categoria = Object.keys(locals.mensajes) %> 
+      <% if(categoria.length) { %>
+        <% locals.mensajes[categoria].forEach(alerta => { %>
+          <div class="alertas">
+            <p class="alerta <%= categoria %>"><%= alerta %></p>
+          </div> 
+        <% }) %> 
+      <% } %>
+    <% } %> 
+  
+    <%- body %>
+
+    <footer class="site-footer contenedor">
+      <nav class="nav">        
+        <% if(locals.usuario.id) { %> 
+          <%- include ('partials/nav-autenticado.ejs') %> 
+        <% } else {%> 
+          <%- include ('partials/nav-footer.ejs') %> 
+        <% } %> 
+      </nav>
+      <p class="copyright">
+        Sitio Web desarrollado por Steve William Ticona Apaza <%- year %> &copy;
+      </p>
+    </footer>
+    <script src="/js/trix.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <% if(usuario.id) { %> 
+      <script src="/js/foto.js"></script> 
+      <script src="/dist/bundle.js"></script>
+    <% } %> 
+    <script src="/js/mapa.js"></script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<main class="contenedor contenedor-formularios">
+    <h1><%= nombrePagina %> </h1>
+
+    <form class="default-form" method="POST" enctype="multipart/form-data">
+        <legend>Sube tu imagen que se mostrará junto a tu nombre</legend>        
+        <div class="campo">
+            <label>Imagen</label>
+            <input id="file" type="file" name="imagen">             
+        </div> 
+        <% if(usuario.imagen){ %>      
+        <div class="campo">
+             <label>Imagen Actual</label>
+             <img class="img-pub" src="/uploads/perfiles/<%= usuario.imagen %> " width="200">
+             <label> Imagen Nueva : </label>
+             <div id="preview" class="image-preview"></div>
+        </div>
+        <% } else { %>
+        <div class="campo">
+            <label> Imagen Actual : </label>
+            <img class="img-pub" src="/img/avatar.png%> " width="200">            
+            <label> Imagen Nueva : </label>
+             <div id="preview" class="image-preview-perfil"></div>
+        </div>  
+        <% } %> 
+        <div class="campo enviar">            
+            <input type="submit" value="Subir Imagen" class="btn btn-rosa">
+        </div>
+
+    </form>
+</main>

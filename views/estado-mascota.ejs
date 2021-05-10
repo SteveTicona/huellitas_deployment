@@ -1,0 +1,20 @@
+<main class="contenedor contenedor-formularios min-height">
+    <h1><%= nombrePagina %> </h1>
+
+    <form class="default-form" method="POST">
+        
+        <div class="campo">
+            <label class="margin-right">Estado Mascota</label>
+            <select name="estado">
+                <option value=" " selected disabled>-- Seleccione un estado --</option>
+                <option value="perdido" <%= publicacion.estado === "perdido" ? 'selected' : '' %> >Mascota Perdida</option>
+                <option value="encontrado" <%= publicacion.estado === "encontrado" ? 'selected' : '' %> >Encontré a mi mascota </option>
+            </select>
+        </div>
+        <div class="campo enviar">            
+            <input type="submit" value="Cambiar Estado" class="btn btn-rosa">
+        </div>
+
+    </form>
+</main>
+

@@ -1,0 +1,72 @@
+<div class="encabezado-publicacion">
+    <div class="contenedor">
+        <div class="resumen-publicacion">
+            <h1>Peludito en la Calle</h1>
+            <div class="info-autor">
+                <div class="imagen">
+                    <% if(peludito.usuario.imagen) {%>
+                        <img class="imagen" src="/uploads/perfiles/<%= peludito.usuario.imagen%> ">
+                    <% }else { %>  
+                        <img class="imagen" src="/img/avatar.png%> "> 
+                    <% } %> 
+                </div>
+                <div class="infomacion">
+                    <p>Publicado por:</p>
+                    <p class="autor">
+                        <%= peludito.usuario.nombre %> 
+                    </p>
+                </div>
+            </div> <!--Info autor-->
+        </div> <!--Resumen Publicacion-->
+        <div>
+            <% if(peludito.estado === 'perdido') { %> 
+                <a href="/categoria/peluditos-perdidos">
+                    <h1 class="color-plomo">Peluditos sin identificar</h1>
+                </a>
+            <% } else { %>
+                <a href="/categoria/mascotas-encontradas">
+                    <h1 class="color-plomo">Mascotas Encontradas</h1>            
+                </a>
+            <% } %> 
+        </div>
+    </div>
+</div>
+
+<main class="contenido-publicacion">
+    <div class="contenedor">
+        <div class="informacion-publicacion">            
+            <div class="descripcion-publicacion">                
+                <img src="/uploads/peluditos/<%= peludito.imagen %> " alt="">                
+                <p><span>Raza : </span><%= peludito.raza %> </p>
+                <p><span>Sexo : </span><%= peludito.sexo %> </p>
+                <p><span>Tamaño : </span><%= peludito.tamano %> </p>
+                <p><span>Color : </span><%= peludito.color %> </p>  
+                <% moment.locale('es'); %> 
+                <% const fecha = '2021-05-05' + ' ' + peludito.hora; %>
+                <!-- <p><span>Fecha en que se perdio : </span><%= moment( fecha ).format('LLLL') %> Horas </p> -->
+                <p><span>Fecha en que se lo vio : </span><%= moment( peludito.publicacion ).format('LL') %> </p>
+                <% moment.locale('en'); %> 
+                <p><span>Hora en que se lo vio : </span><%= moment( fecha ).format('LT') %></p>
+                <p><span>Número de Contacto : </span><%= peludito.telefono %> </p>  
+                <p><span>Informacion Adicional :</span></p>
+                <%- peludito.descripcion %> 
+            </div><!--Descripcion-->            
+        </div><!--Informacion Publicacion-->
+        <aside class="informacion">
+            <legend>Lugar por donde se lo vio</legend>
+            <div class="fecha">               
+                <i class="far fa-calendar-alt"></i>
+                <% moment.locale('es'); %> 
+                <p><%= moment( peludito.publicacion ).format('LLLL') %> Horas </p>              
+            </div>
+            <div class="ubicacion">
+                <i class="fas fa-map-marker-alt"></i>
+                <p><%= peludito.direccion %> </p>                 
+            </div>
+             <!--Mapa Ubicacion-->
+            <input type="hidden" id="lat" value="<%= peludito.ubicacion.coordinates[0] %> ">
+            <input type="hidden" id="lng" value="<%= peludito.ubicacion.coordinates[1] %> ">
+            <div id="ubicacion-publicacion"></div>              
+        </aside>
+    </div>
+</main>

@@ -1,0 +1,91 @@
+<main class="contenedor panel-administracion">
+    <div class="imagen-administracion">
+        <% if(usuario.imagen){ %>   
+            <img class="imagen-circular" src="/uploads/perfiles/<%= usuario.imagen %> ">           
+        <% } else { %>
+            <img class="imagen-circular" src="/img/avatar.png%> ">            
+        <% } %>          
+        <h3><%= usuario.nombre %> </h3>
+    </div>  
+    <h1><%= nombrePagina %> </h1>
+
+    <div class="contenedor-botones">
+        <a href="/editar-perfil" class="btn btn-rosa">Editar Perfil</a>
+        <a href="/cambiar-password" class="btn btn-verde">Cambiar Password</a>      
+        <a href="/imagen-perfil" class="btn btn-amarillo">Imagen Pefil</a>
+    </div>   
+    <div class="seccion-admin">
+        <h2>CREA UNA NUEVA PUBLICACIÓN</h2>
+        <div class="contenedor-botones">
+            <a href="/mascota-perdida" class="btn btn-azul2">Mi mascota se perdió</a>
+            <a href="/peludito-perdido" class="btn btn-azul">Peluditos en la calle sin identificar</a>            
+        </div>
+    </div>
+    <div class="seccion-admin">
+        <h2>Tus Publicaciones : Mascotas Perdidas</h2>
+        <% if(mascotas.length) { %> 
+            <ul style="width: 100%; max-height: 350px; overflow: auto">
+                <% mascotas.forEach( publicacion => {  %> 
+                <li class="informacion-publicacion">
+                    <div class="informacion-admin">                                            
+                        <img class="imagen-circular" src="/uploads/mascotas/<%= publicacion.imagen %> ">   
+                        <div>
+                            <% moment.locale('es'); %> 
+                            <p class="fecha"><%= moment( publicacion.publicacion ).format('LL') %> </p>
+                            <a href="/mascota/<%= publicacion.slug %>" target="_blank">
+                                <h3>Mascota : <%= publicacion.mascota %> </h3>  
+                            </a>                            
+                            <% const detalle = `Raza: ${publicacion.raza} - Sexo: ${publicacion.sexo}` %>  
+                            <!-- <small><pre><%= detalle %></pre> </small>   -->
+                            <% const estado = publicacion.estado %>                          
+                            <p class="estado">Estado : 
+                            <span class="<%= publicacion.estado === "perdido" ? 'perdido' : 'encontrado' %>"><%= estado.toUpperCase()%> </span>
+                            </p> 
+                        </div> 
+                    </div>
+                    <div class="acciones contenedor-botones">
+                        <a href="/editar-publicacion-mascota/<%= publicacion.id %> " class="btn btn-verde">Editar Información</a> 
+                        <a href="/estado-mascota/<%= publicacion.id %> " class="btn btn-azul2">Cambiar Estado</a>                    
+                        <a href="/eliminar-mascota/<%= publicacion.id %> " class="btn btn-rojo">Eliminar Publicación</a>
+                    </div>                    
+                </li>    
+                <% }) %>           
+            </ul>
+        <% }else { %>
+            <p>No tienes publicaciones creadas</p>
+        <% } %> 
+
+        <h2>Tus Publicaciones : Peluditos sin identificar</h2>
+        <% if(peluditos.length) { %> 
+            <ul style="width: 100%; max-height: 350px; overflow: auto">
+                <% peluditos.forEach( publicacion => {  %> 
+                <li class="informacion-publicacion">
+                    <div class="informacion-admin">
+                        <img class="imagen-circular" src="/uploads/peluditos/<%= publicacion.imagen %> ">
+                        <div>
+                            <p class="fecha"><%= moment( publicacion.publicacion ).format('LL') %> </p>
+                            <a href="/peludito/<%= publicacion.slug %>" target="_blank">
+                                <h3>Peludito en la calle</h3>
+                            </a>
+                            <% const detalle = `Raza: ${publicacion.raza} - Sexo: ${publicacion.sexo}` %>  
+                            <!-- <small><pre><%= detalle %></pre> </small>    -->
+                            <% const estado = publicacion.estado %>                          
+                            <p class="estado">Estado : 
+                            <span class="<%= publicacion.estado === "perdido" ? 'perdido' : 'encontrado' %>"><%= estado.toUpperCase()%> </span>
+                            </p> 
+                        </div>
+                    </div>
+                    <div class="acciones contenedor-botones">
+                        <a href="/editar-publicacion-peludito/<%= publicacion.id %> " class="btn btn-verde">Editar Información</a> 
+                        <a href="/estado-peludito/<%= publicacion.id %> " class="btn btn-azul2">Cambiar Estado</a>                    
+                        <a href="/eliminar-peludito/<%= publicacion.id %> " class="btn btn-rojo">Eliminar Publicación</a>
+                    </div>
+                </li>  
+                <% }) %>           
+            </ul>
+        <% }else { %>
+            <p>No tienes publicaciones creadas</p>
+        <% } %> 
+    </div>  
+    
+</main>

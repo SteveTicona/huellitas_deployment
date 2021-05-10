@@ -1,0 +1,65 @@
+<div class="contenedor proximos-eventos">
+    <h1>Mascotas Reencontradas con sus dueños</h1>   
+    <div class="grid columnas-md-3 ">
+        <% if( mascotas.length > 0 ) { %> 
+            <% mascotas.forEach(publicacion => { %>             
+                <div class="card">
+                    <a href="/mascota/<%= publicacion.slug %>"> <img src="/uploads/mascotas/<%= publicacion.imagen %> "> </a>            
+                    <div class="card-texto">
+                        <% moment.locale('es'); %> 
+                        <p class="fecha"><%= moment( publicacion.publicacion ).format('LLLL') %> Horas </p>
+                        <a href="/mascota/<%= publicacion.slug %> ">
+                            <h3>Mascota <%= publicacion.mascota %> reecontrada con su dueño </h3>
+                        </a>
+                        <div class="info-autor">
+                            <% if(publicacion.usuario.imagen){ %>                             
+                                <img class="imagen" src="/uploads/perfiles/<%= publicacion.usuario.imagen%> ">                                 
+                            <% } else { %>
+                                <img class="imagen" src="/img/avatar.png%> ">                                             
+                            <% } %> 
+                            <div class="informacion">
+                                <p>Publicado por:</p>
+                                <p class="autor"><%= publicacion.usuario.nombre %> </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            <% }) %> 
+        <% } else { %>
+            <p>No hay publicaciones</p>
+        <% } %>     
+    </div><!--grid-->
+    <h1>Peluditos reencontrados con sus dueños</h1>   
+    <div class="grid columnas-md-3 ">
+        <% if( peluditos.length > 0 ) { %> 
+            <% peluditos.forEach(publicacion => { %>             
+                <div class="card">
+                    <a href="/peludito/<%= publicacion.slug %>"> <img src="/uploads/peluditos/<%= publicacion.imagen %> "> </a>            
+                    <div class="card-texto">
+                        <% moment.locale('es'); %> 
+                        <p class="fecha"><%= moment( publicacion.publicacion ).format('LLLL') %> Horas</p>
+                        <a href="/peludito/<%= publicacion.slug %> ">
+                            <h3>Peludito reencontrado con su dueño</h3>
+                        </a>
+                        <div class="info-autor">
+                            <% if(publicacion.usuario.imagen){ %>                             
+                                <img class="imagen" src="/uploads/perfiles/<%= publicacion.usuario.imagen%> ">                                 
+                            <% } else { %>
+                                <img class="imagen" src="/img/avatar.png%> ">                                             
+                            <% } %> 
+                            <div class="informacion">
+                                <p>Publicado por:</p>
+                                <p class="autor"><%= publicacion.usuario.nombre %> </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            <% }) %> 
+        <% } else { %> 
+            <p>No hay publicaciones</p>       
+        <% } %>       
+    </div><!--grid-->
+    
+</div>

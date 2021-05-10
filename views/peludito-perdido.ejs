@@ -1,0 +1,81 @@
+<main class="contenedor contenedor-formularios">
+    <h1><%= nombrePagina %> </h1>
+
+    <form action="/peludito-perdido" class="default-form" method="POST" enctype="multipart/form-data">
+
+        <div class="columnas-2 grid">
+            <div class="campo">
+                <label>Sexo</label>
+                <select name="sexo" required>
+                    <option value="">-- Seleccione una Opción --</option>
+                    <option value="Macho">Macho</option>
+                    <option value="Hembra">Hembra</option>
+                </select>
+            </div>
+            <div class="campo">
+                <label>Raza</label>
+                <input type="text" name="raza" placeholder="Raza de la mascota">
+            </div>            
+        </div>
+
+        <div class="columnas-2 grid">
+            <div class="campo">
+                <label>Teléfono</label>
+                <input type="text" name="telefono" placeholder="Tu numero de celular">
+            </div>
+            <div class="campo">
+                <label>Color</label>
+                <input type="text" name="color" placeholder="Colores de la mascota" required>
+            </div>            
+        </div>
+
+        <div class="columnas-2 grid">
+            <div class="campo">
+                <label>Tamaño</label>
+                <select name="tamano" required>
+                    <option value="">-- Seleccione una Opción --</option>
+                    <option value="Grande" >Grande</option>
+                    <option value="Mediano">Mediano</option>
+                    <option value="Pequeño">Pequeño</option>
+                </select>
+            </div>
+            <div class="campo">
+                <label>Hora en que se lo vio</label>
+                <input type="time" name="hora" required>
+            </div>         
+        </div>
+           
+
+        <div class="campo descripcion">
+            <label>Información Adiconal</label>
+            <div class="contenedor-editor">
+                <input type="hidden" id="x" name="descripcion">
+                <trix-editor input="x"></trix-editor>
+            </div>
+        </div>
+        <div class="campo">
+            <label>Imagen</label>
+            <input id="file" type="file" name="imagen" required> 
+            <div id="preview" class="image-preview"></div>
+        </div>       
+
+        <legend>Lugar por donde se lo vio</legend>
+        <div class="campo buscador align-none">
+            <label>Coloca una Dirección</label>
+            <div class="contenedor-input">
+                <input type="text" name="direccion" placeholder="Coloca una dirección aproximada por donde vio al peludito" required>
+                <small>Mueva el pin al lugar por donde vio al peludito</small>                    
+            </div>            
+        </div>
+        <div class="campo mapa">
+            <div id="mapa"></div>
+        </div>
+        <input type="hidden" id="lat" name="lat">
+        <input type="hidden" id="lng" name="lng">       
+        <input type="hidden" id="editar" value="crear">   
+        <div class="campo enviar">            
+            <input type="submit" value="Crear Publicación" class="btn btn-rosa">
+        </div>
+
+    </form>
+</main>

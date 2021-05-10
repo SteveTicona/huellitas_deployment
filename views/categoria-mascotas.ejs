@@ -1,0 +1,33 @@
+<div class="contenedor proximos-eventos">
+    <h1><%= nombrePagina %></h1>   
+    <div class="grid columnas-md-3 ">
+        <% if( mascotas.length > 0 ) { %> 
+            <% mascotas.forEach(publicacion => { %>             
+                <div class="card">
+                    <a href="/mascota/<%= publicacion.slug %>"> <img src="/uploads/mascotas/<%= publicacion.imagen %> "> </a>            
+                    <div class="card-texto">
+                        <% moment.locale('es'); %> 
+                        <p class="fecha"><%= moment( publicacion.publicacion ).format('LLLL') %> Horas </p>
+                        <a href="/mascota/<%= publicacion.slug %> ">
+                            <h3>Mascota perdida <%= publicacion.mascota %> </h3>
+                        </a>
+                        <div class="info-autor">
+                            <% if(publicacion.usuario.imagen){ %>                             
+                                <img class="imagen" src="/uploads/perfiles/<%= publicacion.usuario.imagen%> ">                                 
+                            <% } else { %>
+                                <img class="imagen" src="/img/avatar.png%> ">                                             
+                            <% } %> 
+                            <div class="informacion">
+                                <p>Publicado por:</p>
+                                <p class="autor"><%= publicacion.usuario.nombre %> </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            <% }) %> 
+        <% } else { %>
+            <p>No tienes publicaciones creadas</p>
+        <% } %>     
+    </div><!--grid-->
+</div>
