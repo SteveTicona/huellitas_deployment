@@ -10,6 +10,7 @@ body {
   font-family: 'Raleway', sans-serif;
   /* font-weight: 900; */
   color: #484349;
+  zoom: 95%;
 }
 h1,
 h2 {
@@ -76,9 +77,9 @@ p {
   border: none;
   background-color: transparent;
   color: white;
-  width: 100%;
-  display: block;
-  flex: 0 0 100%;
+  /* width: 100%; */
+  display: inline-block;
+  /* flex: 0 0 100%; */
 }
 @media (min-width: 768px) {
   .btn {
@@ -135,6 +136,11 @@ p {
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 4rem;
   }
+
+  .columnas-form-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
 }
 /** Card Component **/
 .card {
@@ -240,6 +246,7 @@ nav.nav a:first-child {
   color: white;
   letter-spacing: .2rem;
   word-spacing: .5rem;
+  width: 90%;
 }
 
 .hero h2 {
@@ -249,6 +256,7 @@ nav.nav a:first-child {
   text-align: center;
   letter-spacing: .1rem;
   word-spacing: .1rem;
+  width: 90%;
 }
 
 .naranja {
@@ -331,31 +339,20 @@ main.categorias {
   transform: scale(0.95);
 }
 
+
+
 /** Caracteristicas **/
 .rosa-celeste {
   background: linear-gradient(
     to bottom,
     #b8336a 0%,
-    #b8336a 50%,
-    #068d9d 50%,
+    #b8336a 45%,
+    #068d9d 45%,
     #068d9d 100%
   );
-
+  /* background: linear-gradient(to bottom, #b8336a, #068d9d); */
   padding: 2rem 0;
 }
-
-.verde-naranja {
-  background: linear-gradient(
-    to bottom,
-    #688e26 0%,
-    #688e26 50%,
-    #0f4c5c 50%,
-    #0f4c5c 100%
-  );
-
-  padding: 2rem 0;
-}
-
 @media (min-width: 768px) {
   .rosa-celeste {
     background: linear-gradient(
@@ -366,19 +363,8 @@ main.categorias {
       #068d9d 100%
     );
   }
-
-  .verde-naranja {
-    background: linear-gradient(
-      to right,
-      #688e26 0%,
-      #688e26 50%,
-      #0f4c5c 50%,
-      #0f4c5c 100%
-    );
-  }
-
 }
-.huellitas {
+.huellitas {  
   color: white;
   width: 90%;
 }
@@ -411,7 +397,7 @@ main.categorias {
 
 @media (min-width: 768px) {
   .min-height {
-    min-height: calc(100vh - 96px - 98px - 16px);
+    min-height: calc(100vh - 69.21px - 87.96px + 16px);
   }
 }
 
@@ -441,6 +427,53 @@ main.contenedor-formularios {
   display:flex;
   flex-direction: column;  
   flex: 1;
+}
+
+.campo-imagenes {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.campo-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.campo-preview img {
+  margin: 0 1rem;
+}
+
+.default-form .campo-imagenes label {
+  flex: 0 0 120px;
+}
+
+@media (max-width: 768px) {
+  .campo-imagenes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0;    
+  }
+  .default-form .campo-imagenes label {
+    flex: 0 0 20px;
+  }  
+  .campo-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  .campo-preview img {
+    margin: 1rem 0;
+  }
+
+  .campo.enviar {
+    justify-content: center;
+    padding-top: 2rem;
+  }
 }
 
 .align-none {
@@ -485,7 +518,7 @@ main.contenedor-formularios {
 .contenedor-editor {
   flex: 1;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
 }
 trix-editor {
   display: block;
@@ -547,6 +580,10 @@ trix-toolbar .trix-button--icon-strike {
   }
   .contenedor-botones a:last-of-type {
     margin-right: 0;
+  }
+
+  .img-pub {
+    margin-right: 2rem;
   }
 }
 
@@ -719,7 +756,8 @@ aside img {
   background-color: #e1e1e1;
   height: 70px;
   width: 70px; 
-  margin-right: 2rem;  
+  /* margin-right: 2rem;   */
+  /* margin: 0 2rem;  */
   object-fit: cover;
 }
 
@@ -728,13 +766,14 @@ aside img {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  /* text-align: center; */
 }
 
 .imagen-administracion h3 {
-  text-align: left;
+  text-align: center;
   font-family: 'Raleway', sans-serif;
   font-size: 2rem;
-  margin: 0;
+  margin-left: 1rem;
 }
 
 .info-contacto {
@@ -828,9 +867,9 @@ aside img {
   max-width:250px;
 }
 
-.img-pub {
+/* .img-pub {
   margin-right: 2rem;
-}
+} */
 
 .margin-right {
   margin-right: 2rem;
@@ -886,4 +925,49 @@ aside img {
 
 .color-plomo {
   color: #484349;
+}
+
+.grid-container {
+  display: flex;
+  flex-direction: column;
+  color: white;  
+}
+
+.grid-item-1  {
+  display: flex;
+  flex-direction: column;
+  background-color: #b8336a;
+  padding: 2rem;
+  height: 100%; 
+  justify-content: center;   
+  
+}
+
+.grid-item-2  {
+  display: flex;
+  flex-direction: column;
+  background-color: #068d9d;
+  padding: 2rem;  
+  height: 100%; 
+  justify-content: center;    
+}
+
+@media (min-width: 768px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+  }  
+  .grid-item-1  {
+    padding: 2rem 2rem 2rem 5rem;   
+  }  
+  .grid-item-2  {
+    padding: 2rem 5rem 2rem 2rem;    
+  }
+}
+
+.grid-container h3 {
+  font-size: 2.4rem; 
+}
+.grid-container p {
+  font-size: 1.4rem;
 }

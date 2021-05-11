@@ -3,7 +3,7 @@
 
     <form class="default-form" method="POST" enctype="multipart/form-data">
 
-        <div class="columnas-2 grid">
+        <div class="columnas-form-2 grid">
             <div class="campo">
                 <label>Mascota</label>
                 <input type="text" value="<%= publicacion.mascota %>" name="mascota" placeholder="Nombre de la Mascota" required>
@@ -14,7 +14,7 @@
             </div>            
         </div>
 
-        <div class="columnas-2 grid">
+        <div class="columnas-form-2 grid">
             <div class="campo">
                 <label>Sexo</label>
                 <select name="sexo" required>
@@ -29,7 +29,7 @@
             </div>            
         </div>
 
-        <div class="columnas-2 grid">
+        <div class="columnas-form-2 grid">
             <div class="campo">
                 <label>Tamaño de la mascota</label>
                 <select name="tamano" required>
@@ -45,7 +45,7 @@
             </div>            
         </div>
 
-        <div class="columnas-2 grid">
+        <div class="columnas-form-2 grid">
             <div class="campo">
                 <label>Telefono</label>
                 <input type="text" name="telefono" value="<%= publicacion.telefono %>" placeholder="Tu numero de celular" required>
@@ -70,7 +70,7 @@
             <input id="file" type="file" name="imagen">
         </div> 
         <% if(publicacion.imagen){ %>     
-        <div class="campo">
+        <div class="campo-imagenes">
              <label>Imagen Actual</label>
              <img class="img-pub" src="/uploads/mascotas/<%= publicacion.imagen %> " width="200">
              <label> Imagen Nueva : </label>

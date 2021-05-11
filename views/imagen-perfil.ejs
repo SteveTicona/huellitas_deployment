@@ -1,4 +1,4 @@
-<main class="contenedor contenedor-formularios">
+<main class="contenedor contenedor-formularios min-height">
     <h1><%= nombrePagina %> </h1>
 
     <form class="default-form" method="POST" enctype="multipart/form-data">
@@ -8,14 +8,14 @@
             <input id="file" type="file" name="imagen">             
         </div> 
         <% if(usuario.imagen){ %>      
-        <div class="campo">
+        <div class="campo-preview">
              <label>Imagen Actual</label>
              <img class="img-pub" src="/uploads/perfiles/<%= usuario.imagen %> " width="200">
              <label> Imagen Nueva : </label>
              <div id="preview" class="image-preview"></div>
         </div>
         <% } else { %>
-        <div class="campo">
+        <div class="campo-preview">
             <label> Imagen Actual : </label>
             <img class="img-pub" src="/img/avatar.png%> " width="200">            
             <label> Imagen Nueva : </label>

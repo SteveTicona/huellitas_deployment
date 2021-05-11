@@ -3,7 +3,7 @@
 
     <form action="/peludito-perdido" class="default-form" method="POST" enctype="multipart/form-data">
 
-        <div class="columnas-2 grid">
+        <div class="columnas-form-2 grid">
             <div class="campo">
                 <label>Sexo</label>
                 <select name="sexo" required>
@@ -18,7 +18,7 @@
             </div>            
         </div>
 
-        <div class="columnas-2 grid">
+        <div class="columnas-form-2 grid">
             <div class="campo">
                 <label>Teléfono</label>
                 <input type="text" name="telefono" placeholder="Tu numero de celular">
@@ -29,7 +29,7 @@
             </div>            
         </div>
 
-        <div class="columnas-2 grid">
+        <div class="columnas-form-2 grid">
             <div class="campo">
                 <label>Tamaño</label>
                 <select name="tamano" required>
@@ -55,9 +55,11 @@
         </div>
         <div class="campo">
             <label>Imagen</label>
-            <input id="file" type="file" name="imagen" required> 
-            <div id="preview" class="image-preview"></div>
+            <input id="file" type="file" name="imagen" required>             
         </div>       
+        <div class="campo-preview">
+            <div id="preview" class="image-preview"></div>
+        </div>
 
         <legend>Lugar por donde se lo vio</legend>
         <div class="campo buscador align-none">

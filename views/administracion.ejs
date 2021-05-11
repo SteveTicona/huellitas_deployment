@@ -1,10 +1,12 @@
 <main class="contenedor panel-administracion">
     <div class="imagen-administracion">
-        <% if(usuario.imagen){ %>   
-            <img class="imagen-circular" src="/uploads/perfiles/<%= usuario.imagen %> ">           
-        <% } else { %>
-            <img class="imagen-circular" src="/img/avatar.png%> ">            
-        <% } %>          
+        <div class="imagen-contenedor">
+            <% if(usuario.imagen){ %>   
+                <img class="imagen-circular" src="/uploads/perfiles/<%= usuario.imagen %> ">           
+            <% } else { %>
+                <img class="imagen-circular" src="/img/avatar.png%> ">            
+            <% } %> 
+        </div>         
         <h3><%= usuario.nombre %> </h3>
     </div>  
     <h1><%= nombrePagina %> </h1>
